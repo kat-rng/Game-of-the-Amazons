@@ -1,7 +1,6 @@
 # Practicing using pygame
 import pygame
 
-
 # Initializes pygame
 pygame.init()
 
@@ -20,7 +19,7 @@ while run:
     # Event checker, reads through all recent events
     for event in pygame.event.get():
         # Checking if the game has been exited
-        if event.type == pygame.quit():
+        if event.type == pygame.QUIT:
             run = False
 
 # Closes the window
