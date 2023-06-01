@@ -1,6 +1,16 @@
 # Practicing using pygame
 import pygame
 
+class Tile:
+    def __init__(self, tile_array, x, y):
+        # tile_array is an array of Tile objects. It should be provided by the TileManager
+        self.tile_array = tile_array
+        self.x = x
+        self.y = y
+
+
+# START OF GAME CODE
+
 # Initializes pygame
 pygame.init()
 
