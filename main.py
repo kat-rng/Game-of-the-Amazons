@@ -9,7 +9,7 @@ class Tile:
     # Controls the core game logic through its various functions
     # Frequently uses "recursive" calls via the tile_array
 
-    def __init__(self, tile_array, x, y, x_bound, y_bound, state):
+    def __init__(self, tile_array, x, y, x_bound, y_bound, state, team_id=0):
         # tile_array is an array of Tile objects. It should be provided by the TileManager
         self.tile_array = tile_array
 
@@ -22,6 +22,8 @@ class Tile:
         # Setting state variable, which describes how the tile should be displayed
         self.state = state
 
+        # Setting a team id, which can be used to identify which color to display amazons as
+        self.team_id = team_id
 
     def propagate(self, offset_x, offset_y, is_considering_movement):
         # Used to display potential movement locations when requested.
