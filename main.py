@@ -23,6 +23,30 @@ class Tile:
         self.state = state
 
 
+    def propagate(self, offset_x, offset_y, is_considering_movement):
+        # Used to display potential movement locations when requested.
+        # is_considering is used to determine behavior later regarding changing state and continuing to propagate
+        # (see state section in __init__ for more info on why the state checks are structured as they are later)
+
+        if is_considering_movement & self.state == 0:
+            # If considering movement and the tile is empty, then switch to showing that the tile can be accessed
+            self.state = 1
+        elif ~is_considering_movement & self.state == 1:
+            # If considering movement and the tile is empty, then switch to showing that the tile can be accessed
+            self.state = 0
+        else:
+            # No changes are needed, so end this recursive call
+            return
+
+        # Finding the next tile location from the given offset
+        next_x = self.x + offset_x
+        next_y = self.y + offset_y
+
+        if (next_x >= 0 & next_x < self.x_bound) & (next_y >= 0 & next_y < self.y_bound):
+            self.tile_array[next_x, next_y].propogate(self.x, self.y)
+
+
+
 class TileManager:
     # The container (indirectly) for all the Tiles
     # Manages communication between the game interface and the Tile elements
