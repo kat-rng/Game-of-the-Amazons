@@ -2,11 +2,19 @@
 import pygame
 
 class Tile:
-    def __init__(self, tile_array, x, y):
+
+    def __init__(self, tile_array, x, y, x_bound, y_bound, state):
         # tile_array is an array of Tile objects. It should be provided by the TileManager
         self.tile_array = tile_array
+
+        # Setting x and y location along with boundaries from initialization call parameters
         self.x = x
         self.y = y
+        self.x_bound = x_bound
+        self.y_bound = y_bound
+
+        # Setting state variable, which describes how the tile should be displayed
+        self.state = state
 
 
 # START OF GAME CODE
