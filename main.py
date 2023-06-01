@@ -31,5 +31,8 @@ while run:
     # Displaying a rectangle
     pygame.draw.rect(window, (255, 0, 0), (x, y, width, height))
 
+    # Updating the display
+    pygame.display.update()
+
 # Closes the window
 pygame.quit()
