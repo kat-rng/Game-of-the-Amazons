@@ -17,3 +17,10 @@ while run:
     # Divide 1000 by the number below to get FPS estimate
     pygame.time.delay(100)
 
+    # Event checker, reads through all recent events
+    for event in pygame.event.get():
+        # Checking if the game has been exited
+        if event.type == pygame.quit():
+            run = False
+
+pygame.quit()
