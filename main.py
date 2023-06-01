@@ -26,6 +26,12 @@ class TileManager:
 
         # Creating an empty tile array
         self.tile_array = np.zeros((self.x_length, self.y_length), dtype=Tile)
+        
+        # Loop to fill in all the locations inside tile_array
+        for x in range(self.x_length):
+            for y in range(self.y_length):
+                self.tile_array[x, y] = Tile(self.tile_array, x, y, self.x_length, self.y_length, 0)
+
 # START OF GAME CODE
 
 # Initializes pygame
