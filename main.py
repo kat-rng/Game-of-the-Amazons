@@ -2,6 +2,10 @@
 import pygame
 
 class Tile:
+    # The core game logic element
+    # Defines what each tile should be displayed as through the state variable
+    # Controls the core game logic through its various functions
+    # Frequently uses "recursive" calls via the tile_array
 
     def __init__(self, tile_array, x, y, x_bound, y_bound, state):
         # tile_array is an array of Tile objects. It should be provided by the TileManager
@@ -18,6 +22,9 @@ class Tile:
 
 
 class TileManager:
+    # The container (indirectly) for all the Tiles
+    # Manages communication between the game interface and the Tile elements
+    # Generates the tile_array and sends it to each tile element
 
     def __init__(self, side_length = 10):
         # Setting up a square board
