@@ -20,6 +20,8 @@ class Tile:
         self.y_bound = y_bound
 
         # Setting state variable, which describes how the tile should be displayed
+        # -2 means an amazon is on the tile. -1 means the tile is inaccessible.
+        # 0 means the tile is empty, and 1 means it is empty, and it is being considered for movement
         self.state = state
 
         # Setting a team id, which can be used to identify which color to display amazons as
@@ -61,7 +63,7 @@ class TileManager:
 
         # Creating an empty tile array
         self.tile_array = np.zeros((self.x_length, self.y_length), dtype=Tile)
-        
+
         # Loop to fill in all the locations inside tile_array
         for x in range(self.x_length):
             for y in range(self.y_length):
