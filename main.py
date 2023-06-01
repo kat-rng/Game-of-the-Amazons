@@ -23,4 +23,5 @@ while run:
         if event.type == pygame.quit():
             run = False
 
+# Closes the window
 pygame.quit()
