@@ -53,8 +53,8 @@ window = pygame.display.set_mode((500, 500))
 pygame.display.set_caption("Practice game")
 
 # Setting variables for displaying a rectangle
-x = 50
-y = 50
+x_location = 50
+y_location = 50
 width = 40
 height = 60
 
@@ -71,7 +71,7 @@ while run:
             run = False
 
     # Displaying a rectangle
-    pygame.draw.rect(window, (255, 0, 0), (x, y, width, height))
+    pygame.draw.rect(window, (255, 0, 0), (x_location, y_location, width, height))
 
     # Updating the display
     pygame.display.update()
