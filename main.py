@@ -17,6 +17,15 @@ class Tile:
         self.state = state
 
 
+class TileManager:
+
+    def __init__(self, side_length = 10):
+        # Setting up a square board
+        self.x_length = side_length
+        self.y_length = side_length
+
+        # Creating an empty tile array
+        self.tile_array = np.zeros((self.x_length, self.y_length), dtype=Tile)
 # START OF GAME CODE
 
 # Initializes pygame
