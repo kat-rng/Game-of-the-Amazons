@@ -27,6 +27,16 @@ class Tile:
         # Setting a team id, which can be used to identify which color to display amazons as
         self.team_id = team_id
 
+    def get_state(self):
+        return self.state
+
+    def get_team_id(self):
+        return self.team_id
+
+    def set_info(self, state, team_id=0):
+        self.state = state
+        self.team_id = team_id
+
     def propagate(self, offset_x, offset_y, is_considering_movement):
         # Used to display potential movement locations when requested.
         # is_considering is used to determine behavior later regarding changing state and continuing to propagate
