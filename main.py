@@ -211,6 +211,10 @@ class GameManager:
         # Setting up the TileManager
         self.tile_manager = TileManager(tile_side_count)
 
+    def find_current_team(self):
+        # Take the modulo of turns to find the current team
+        return self.turn % self.teams
+
     def update_display(self):
         # Recalculate color for all rectangles
         # and update the window
