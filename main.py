@@ -194,6 +194,19 @@ class TileManager:
         # If none of the above conditions were met, then indicate that no changes have to be displayed.
         return -1
 
+    def print_state(self):
+        # Grabs all the state values from tile_array and prints them
+
+        # Creating an empty integer array
+        state_array = np.zeros((self.x_length, self.y_length))
+
+        # Loop to fill in all the locations inside tile_array
+        for x in range(self.x_length):
+            for y in range(self.y_length):
+                state_array[x, y] = self.tile_array[x, y].get_state()
+
+        print(state_array)
+
 
 class GameManager:
     # Displays the state of the game
@@ -317,6 +330,7 @@ while run:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
             game_manager.click(mouse_x, mouse_y)
+            game_manager.tile_manager.print_state()
 
 
 
