@@ -114,6 +114,15 @@ class DisplayManager:
         # Adding a title to the window
         pygame.display.set_caption("Game of the Amazons")
 
+    def display_tile(self, x, y):
+        # Getting the pixel location to draw the tile at
+        x_location = x * self.tile_size
+        y_location = y * self.tile_size
+
+        # Drawing the tile according to the color from grab_tile_color
+        pygame.draw.rect(self.window, self.grab_tile_color(x, y),
+                         (x_location, y_location, self.tile_size, self.tile_size))
+
     def grab_tile_color(self, x, y):
         tile = self.tile_manager.get_tile(x, y)
 
