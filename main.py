@@ -135,6 +135,8 @@ class TileManager:
         # For moving (is_moving True), 1 means the Amazon was moved.
         # For firing (is_moving False), 1 means a tile was blocked off
 
+        # TODO: Only allow firing from the amazon that just moved
+
         selected_tile = self.tile_array[x, y]
         match selected_tile.get_state():
             case -2:
