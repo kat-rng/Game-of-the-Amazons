@@ -215,6 +215,12 @@ class GameManager:
         # Take the modulo of turns to find the current team
         return self.turn % self.teams
 
+    def click(self, input_x, input_y):
+        # Translate a mouse click into a tile selection, then call select_tile
+        x = math.floor(input_x / self.tile_size)
+        y = math.floor(input_y / self.tile_size)
+        self.select_tile(x, y)
+
     def select_tile(self, x, y):
         # Select a tile, get tile_manager to get an output, and dependent upon the response display the changes or call
         # action_finished if the action is done
