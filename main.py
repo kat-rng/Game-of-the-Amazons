@@ -159,6 +159,7 @@ class DisplayManager:
 # Initializes pygame
 pygame.init()
 
+display = DisplayManager()
 
 # Main game loop
 run = True
@@ -172,6 +173,9 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
+
+    # Display all tile locations
+    display.display_all()
 
     # Updating the display
     pygame.display.update()
