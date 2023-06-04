@@ -56,9 +56,10 @@ class Tile:
         next_x = self.x + offset_x
         next_y = self.y + offset_y
 
+        # Checking if the next location crosses a boundary
+        # If not, then continue the chain of calls
         if (next_x >= 0 & next_x < self.x_bound) & (next_y >= 0 & next_y < self.y_bound):
             self.tile_array[next_x, next_y].propogate(self.x, self.y)
-
 
 
 class TileManager:
