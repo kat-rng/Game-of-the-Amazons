@@ -80,6 +80,20 @@ class TileManager:
             for y in range(self.y_length):
                 self.tile_array[x, y] = Tile(self.tile_array, x, y, self.x_length, self.y_length, 0)
 
+        # Setting the locations of the Amazons
+        self.default_locations()
+
+    def default_locations(self):
+        # Setting the locations to the standard amazons board layout
+        self.tile_array[3, 0].set_info(-2, 1)
+        self.tile_array[6, 0].set_info(-2, 1)
+        self.tile_array[0, 3].set_info(-2, 1)
+        self.tile_array[9, 3].set_info(-2, 1)
+
+        self.tile_array[3, 9].set_info(-2, 2)
+        self.tile_array[6, 9].set_info(-2, 2)
+        self.tile_array[0, 6].set_info(-2, 2)
+        self.tile_array[9, 6].set_info(-2, 2)
 # START OF GAME CODE
 
 # Initializes pygame
