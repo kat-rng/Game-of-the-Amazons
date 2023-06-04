@@ -102,17 +102,6 @@ class TileManager:
 # Initializes pygame
 pygame.init()
 
-# Creating a window
-window = pygame.display.set_mode((500, 500))
-
-# Adding a title to the window
-pygame.display.set_caption("Practice game")
-
-# Setting variables for displaying a rectangle
-x_location = 50
-y_location = 50
-width = 40
-height = 60
 
 # Main game loop
 run = True
@@ -126,8 +115,6 @@ while run:
         if event.type == pygame.QUIT:
             run = False
 
-    # Displaying a rectangle
-    pygame.draw.rect(window, (255, 0, 0), (x_location, y_location, width, height))
 
     # Updating the display
     pygame.display.update()
