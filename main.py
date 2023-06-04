@@ -108,6 +108,67 @@ class TileManager:
     def get_tile(self, x, y):
         return self.tile_array[x, y]
 
+    def select_tile(self, x, y, team, is_moving):
+        # Takes in the tile selection, and manipulates the board accordingly
+
+        # DESIRED RETURN CHARACTERISTICS
+        # It returns -1 if nothing changed,
+        # 0 if the board changed but the action wasn't completed,
+        # and 1 if the board changed, and the action was completed
+
+        # CLARIFICATION OF WHAT RETURNING 1 MEANS:
+        # For moving (is_moving True), 1 means the Amazon was moved.
+        # For firing (is_moving False), 1 means a tile was blocked off
+
+        selected_tile = self.tile_array[x, y]
+        match selected_tile.get_state():
+            case -2:
+                if selected_tile.get_team_id() == team:
+                    # If there is an amazon, and it is of the current team, then do the following:
+
+                    if selected_tile.get_tile_id() == self.considering_id:
+                        # If re-selecting the currently selected tile, then hide the movement options for it
+                        self.considering_id = -1
+                        self.selected_tile.propagate_all(False)
+
+                        # Indicate that the stored tile is no longer being considered
+                        self.valid_tile_considered = False
+                    else:
+                        # If selecting a new Amazon's tile, then do the following:
+
+                        if self.valid_tile_considered:
+                            # If there is a valid tile, then hide the movement options for that tile
+                            self.considering_tile.propagate_all(False)
+
+                        # Set the considering ID to the new id
+                        # Show the movement options for the selected Amazon
+                        self.considering_id = selected_tile.get_tile_id()
+                        selected_tile.propagate_all(True)
+
+                        # Indicate that this tile is being considered, and that it can be operated on
+                        self.considering_tile = selected_tile
+                        self.valid_tile_considered = True
+
+                    # Indicate that the board has been changed, but the action has not been completed
+                    return 0
+            case 1:
+                self.considering_id = -1
+                if is_moving:
+                    # If moving, then do the following:
+
+                    # Remove all considering tile markers
+                    # NOTE: If this is run before considering_tile is set, then it will cause problems
+                    self.considering_tile.propagate_all(False)
+
+                    # "Move" the Amazon from the considering tile to the new tile
+                    selected_tile.set_info(-2, team)
+                    self.considering_tile.set_info(0, 0)
+                else:
+                    # If firing, then do the following:
+
+                    # Set the selected tile to be on fire
+                    # Team ID is set just in case one wants to look at who burned what
+                    selected_tile.set_info(-1, team)
 
 class DisplayManager:
     # Displays the state of the game
