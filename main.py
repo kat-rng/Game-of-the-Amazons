@@ -61,6 +61,16 @@ class Tile:
         if (next_x >= 0 & next_x < self.x_bound) & (next_y >= 0 & next_y < self.y_bound):
             self.tile_array[next_x, next_y].propogate(self.x, self.y)
 
+    def propagate_all(self, is_considering_movement):
+        # Calls nearby tiles to check if they should show that they can be used for movement
+        if self.state == -2:
+            for i in range(-1, 1):
+                for j in range(-1, 1):
+                    # Check if the locations are within bounds
+                    if (self.x + i >= 0 & self.x + i < self.x_bound) & (self.y + j >= 0 & self.y + j < self.y_bound):
+                        # If in bounds, then update
+                        self.tile_array[self.x + i, self.y + j].propagate(i, j, is_considering_movement)
+
 
 class TileManager:
     # The container (indirectly) for all the Tiles
