@@ -50,9 +50,10 @@ class Tile:
         # (see state section in __init__ for more info on why the state checks are structured as they are later)
 
         if is_considering_movement & self.state == 0:
+        if is_considering_movement and self.state == 0:
             # If considering movement and the tile is empty, then switch to showing that the tile can be accessed
             self.state = 1
-        elif ~is_considering_movement & self.state == 1:
+        elif ~is_considering_movement and self.state == 1:
             # If considering movement and the tile is empty, then switch to showing that the tile can be accessed
             self.state = 0
         else:
@@ -66,7 +67,7 @@ class Tile:
         # Checking if the next location crosses a boundary
         # If not, then continue the chain of calls
         # TODO Make the following conditional statement a function, as it is used in propagate_all
-        if (next_x >= 0 & next_x < self.x_bound) & (next_y >= 0 & next_y < self.y_bound):
+        if (0 <= next_x < self.x_bound) and (0 <= next_y < self.y_bound):
             self.tile_array[next_x, next_y].propagate(offset_x, offset_y, is_considering_movement)
 
     def propagate_all(self, is_considering_movement):
@@ -75,7 +76,7 @@ class Tile:
             for i in range(-1, 1):
                 for j in range(-1, 1):
                     # Check if the locations are within bounds
-                    if (self.x + i >= 0 & self.x + i < self.x_bound) & (self.y + j >= 0 & self.y + j < self.y_bound):
+                    if (0 <= self.x + i < self.x_bound) and (0 <= self.y + j < self.y_bound):
                         # If in bounds, then update
                         self.tile_array[self.x + i, self.y + j].propagate(i, j, is_considering_movement)
 
