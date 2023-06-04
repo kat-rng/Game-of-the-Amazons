@@ -25,10 +25,17 @@ class Tile:
         self.state = state
 
         # Setting a team id, which can be used to identify which color to display amazons as
+        # NOTE: this is also set when burning a tile, but it isn't displayed to the player
         self.team_id = team_id
+
+        # Setting a tile id, which can be used to differentiate between tiles
+        self.tile_id = x * x_bound + y
 
     def get_state(self):
         return self.state
+
+    def get_tile_id(self):
+        return self.tile_id
 
     def get_team_id(self):
         return self.team_id
