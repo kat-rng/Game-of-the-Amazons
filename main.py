@@ -52,7 +52,7 @@ class Tile:
         if is_considering_movement and self.state == 0:
             # If considering movement and the tile is empty, then switch to showing that the tile can be accessed
             self.state = 1
-        elif ~is_considering_movement and self.state == 1:
+        elif (not is_considering_movement) and self.state == 1:
             # If considering movement and the tile is empty, then switch to showing that the tile can be accessed
             self.state = 0
         else:
@@ -256,11 +256,11 @@ class GameManager:
         # TODO: Add check to see if game is over, or the next player is out (if adding more than 2 player gameplay)
 
         # If the action wasn't movement, then increment the turn
-        if ~self.is_moving:
+        if not self.is_moving:
             self.turn += 1
 
         # Switch to executing the other action type
-        self.is_moving = ~self.is_moving
+        self.is_moving = not self.is_moving
 
     def update_display(self):
         # Recalculate color for all rectangles
