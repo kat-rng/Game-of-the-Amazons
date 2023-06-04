@@ -224,6 +224,17 @@ class GameManager:
         if output >= 0:
             self.display_all()
 
+    def action_finished(self):
+        # Describes what to do once an action has been completed
+        # TODO: Add check to see if game is over, or the next player is out (if adding more than 2 player gameplay)
+
+        # If the action wasn't movement, then increment the turn
+        if ~self.is_moving:
+            self.turn += 1
+
+        # Switch to executing the other action type
+        self.is_moving = ~self.is_moving
+
     def update_display(self):
         # Recalculate color for all rectangles
         # and update the window
