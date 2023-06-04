@@ -178,8 +178,14 @@ class TileManager:
                     # "Move" the Amazon from the considering tile to the new tile
                     selected_tile.set_info(-2, team)
                     self.considering_tile.set_info(0, 0)
+
+                    # Indicate that the stored tile is no longer being considered
+                    self.valid_tile_considered = False
                 else:
                     # If firing, then do the following:
+
+                    # Remove the markers showing where movement can occur
+                    self.considering_tile.propagate_all(False)
 
                     # Set the selected tile to be on fire
                     # Team ID is set just in case one wants to look at who burned what
