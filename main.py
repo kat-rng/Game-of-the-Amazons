@@ -114,6 +114,32 @@ class DisplayManager:
         # Adding a title to the window
         pygame.display.set_caption("Game of the Amazons")
 
+    def grab_tile_color(self, x, y):
+        tile = self.tile_manager.get_tile(x, y)
+
+        # Use the tile state to determine the color that should be displayed for that tile
+        match tile.get_state():
+            case 0:
+                # Empty
+                return pygame.Color(128, 128, 128)
+            case -1:
+                # On fire/ inaccessible
+                return pygame.Color(255, 0, 0)
+            case 1:
+                # Empty, but being considered for movement
+                return pygame.Color(255, 255, 0)
+            case -2:
+                # Amazon
+                team = tile.get_team_id()
+                if team == 1:
+                    return pygame.Color(0, 255, 0)
+                elif team == 2:
+                    return pygame.Color(0, 0, 255)
+                else:
+                    print("Invalid team ID 135")
+        print("Invalid tile state")
+        print("x location ", x, " y location ", y)
+
 # START OF GAME CODE
 
 # Initializes pygame
