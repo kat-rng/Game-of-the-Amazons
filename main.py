@@ -94,6 +94,9 @@ class TileManager:
         self.tile_array[6, 9].set_info(-2, 2)
         self.tile_array[0, 6].set_info(-2, 2)
         self.tile_array[9, 6].set_info(-2, 2)
+
+    def get_tile(self, x, y):
+        return self.tile_array[x, y]
 # START OF GAME CODE
 
 # Initializes pygame
