@@ -9,7 +9,7 @@ class Tile:
     # Controls the core game logic through its various functions
     # Frequently uses "recursive" calls via the tile_array
 
-    def __init__(self, tile_array, x, y, x_bound, y_bound, state, team_id=0):
+    def __init__(self, tile_array, x, y, x_bound, y_bound, state, team_id=-1):
         # tile_array is an array of Tile objects. It should be provided by the TileManager
         self.tile_array = tile_array
 
@@ -33,7 +33,7 @@ class Tile:
     def get_team_id(self):
         return self.team_id
 
-    def set_info(self, state, team_id=0):
+    def set_info(self, state, team_id=-1):
         self.state = state
         self.team_id = team_id
 
@@ -85,15 +85,15 @@ class TileManager:
 
     def default_locations(self):
         # Setting the locations to the standard amazons board layout
-        self.tile_array[3, 0].set_info(-2, 1)
-        self.tile_array[6, 0].set_info(-2, 1)
-        self.tile_array[0, 3].set_info(-2, 1)
-        self.tile_array[9, 3].set_info(-2, 1)
+        self.tile_array[3, 0].set_info(-2, 0)
+        self.tile_array[6, 0].set_info(-2, 0)
+        self.tile_array[0, 3].set_info(-2, 0)
+        self.tile_array[9, 3].set_info(-2, 0)
 
-        self.tile_array[3, 9].set_info(-2, 2)
-        self.tile_array[6, 9].set_info(-2, 2)
-        self.tile_array[0, 6].set_info(-2, 2)
-        self.tile_array[9, 6].set_info(-2, 2)
+        self.tile_array[3, 9].set_info(-2, 1)
+        self.tile_array[6, 9].set_info(-2, 1)
+        self.tile_array[0, 6].set_info(-2, 1)
+        self.tile_array[9, 6].set_info(-2, 1)
 
     def get_tile(self, x, y):
         return self.tile_array[x, y]
@@ -140,9 +140,9 @@ class DisplayManager:
             case -2:
                 # Amazon
                 team = tile.get_team_id()
-                if team == 1:
+                if team == 0:
                     return pygame.Color(0, 255, 0)
-                elif team == 2:
+                elif team == 1:
                     return pygame.Color(0, 0, 255)
                 else:
                     print("Invalid team ID 135")
