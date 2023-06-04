@@ -144,7 +144,7 @@ class TileManager:
                     if selected_tile.get_tile_id() == self.considering_id:
                         # If re-selecting the currently selected tile, then hide the movement options for it
                         self.considering_id = -1
-                        self.selected_tile.propagate_all(False)
+                        selected_tile.propagate_all(False)
 
                         # Indicate that the stored tile is no longer being considered
                         self.valid_tile_considered = False
