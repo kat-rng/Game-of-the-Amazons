@@ -65,8 +65,9 @@ class Tile:
 
         # Checking if the next location crosses a boundary
         # If not, then continue the chain of calls
+        # TODO Make the following conditional statement a function, as it is used in propagate_all
         if (next_x >= 0 & next_x < self.x_bound) & (next_y >= 0 & next_y < self.y_bound):
-            self.tile_array[next_x, next_y].propogate(self.x, self.y)
+            self.tile_array[next_x, next_y].propagate(offset_x, offset_y, is_considering_movement)
 
     def propagate_all(self, is_considering_movement):
         # Calls nearby tiles to check if they should show that they can be used for movement
