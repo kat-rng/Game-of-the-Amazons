@@ -97,6 +97,11 @@ class TileManager:
 
     def get_tile(self, x, y):
         return self.tile_array[x, y]
+
+
+class DisplayManager:
+    # Displays the state of the game
+    # Sends requested inputs to TileManager, then displays the result
 # START OF GAME CODE
 
 # Initializes pygame
