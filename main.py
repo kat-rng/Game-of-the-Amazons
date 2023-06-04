@@ -194,6 +194,13 @@ class GameManager:
         self.tile_size = pixel_size/tile_side_count
         self.tile_side_count = tile_side_count
 
+        # Indicating that the movement step is being completed
+        self.is_moving = True
+        self.teams = 2
+        # NOTE: turn increases every time a player finishes their two moves, so it's not really a turn counter
+        # NOTE: turn is used to determine the current team playing by taking turn MOD teams
+        self.turn = 0
+
         # Setting up the TileManager
         self.tile_manager = TileManager(tile_side_count)
 
