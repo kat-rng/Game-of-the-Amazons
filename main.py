@@ -170,6 +170,16 @@ class TileManager:
                     # Team ID is set just in case one wants to look at who burned what
                     selected_tile.set_info(-1, team)
 
+                    # Indicate that the stored tile is no longer being considered
+                    self.valid_tile_considered = False
+
+                # Indicate that an action has been completed
+                return 1
+
+        # If none of the above conditions were met, then indicate that no changes have to be displayed.
+        return -1
+
+
 class GameManager:
     # Displays the state of the game
     # Sends requested inputs to TileManager, then displays the result
