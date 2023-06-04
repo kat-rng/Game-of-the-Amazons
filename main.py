@@ -49,7 +49,6 @@ class Tile:
         # is_considering is used to determine behavior later regarding changing state and continuing to propagate
         # (see state section in __init__ for more info on why the state checks are structured as they are later)
 
-        if is_considering_movement & self.state == 0:
         if is_considering_movement and self.state == 0:
             # If considering movement and the tile is empty, then switch to showing that the tile can be accessed
             self.state = 1
