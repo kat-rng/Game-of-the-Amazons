@@ -149,6 +149,11 @@ class DisplayManager:
         print("Invalid tile state")
         print("x location ", x, " y location ", y)
 
+    def display_all(self):
+        for x in range(self.tile_side_count):
+            for y in range(self.tile_side_count):
+                self.display_tile(x, y)
+
 # START OF GAME CODE
 
 # Initializes pygame
