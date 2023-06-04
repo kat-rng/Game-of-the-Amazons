@@ -313,6 +313,9 @@ while run:
         # Checking if the game has been exited
         if event.type == pygame.QUIT:
             run = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            game_manager.click(mouse_x, mouse_y)
 
 
 
