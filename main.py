@@ -215,6 +215,15 @@ class GameManager:
         # Take the modulo of turns to find the current team
         return self.turn % self.teams
 
+    def select_tile(self, x, y):
+        # Select a tile, get tile_manager to get an output, and dependent upon the response display the changes or call
+        # action_finished if the action is done
+        output = self.tile_manager.select_tile(x, y, self.find_current_team(), self.is_moving)
+        if output == 1:
+            self.action_finished()
+        if output >= 0:
+            self.display_all()
+
     def update_display(self):
         # Recalculate color for all rectangles
         # and update the window
