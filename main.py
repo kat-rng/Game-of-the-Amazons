@@ -72,8 +72,8 @@ class Tile:
     def propagate_all(self, is_considering_movement):
         # Calls nearby tiles to check if they should show that they can be used for movement
         if self.state == -2:
-            for i in range(-1, 1):
-                for j in range(-1, 1):
+            for i in range(-1, 2):
+                for j in range(-1, 2):
                     # Check if the locations are within bounds
                     if (0 <= self.x + i < self.x_bound) and (0 <= self.y + j < self.y_bound):
                         # If in bounds, then update
