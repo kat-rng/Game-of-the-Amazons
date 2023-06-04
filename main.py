@@ -1,7 +1,7 @@
 # Practicing using pygame
 import pygame
 import numpy as np
-
+import math
 
 class Tile:
     # The core game logic element
