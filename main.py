@@ -187,13 +187,15 @@ class GameManager:
         # Creating a window
         self.window = pygame.display.set_mode((pixel_size, pixel_size))
 
-        # Creating tile_size, which can be used to segment the display and detect which tiles to update
-        self.tile_size = pixel_size/tile_side_count
-        self.tile_manager = TileManager(tile_side_count)
-        self.tile_side_count = tile_side_count
-
         # Adding a title to the window
         pygame.display.set_caption("Game of the Amazons")
+
+        # Creating tile_size, which can be used to segment the display and detect which tiles to update
+        self.tile_size = pixel_size/tile_side_count
+        self.tile_side_count = tile_side_count
+
+        # Setting up the TileManager
+        self.tile_manager = TileManager(tile_side_count)
 
     def display_tile(self, x, y):
         # Getting the pixel location to draw the tile at
