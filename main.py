@@ -102,6 +102,18 @@ class TileManager:
 class DisplayManager:
     # Displays the state of the game
     # Sends requested inputs to TileManager, then displays the result
+    def __init__(self, pixel_size=500, tile_side_count=10):
+        # Creating a window
+        self.window = pygame.display.set_mode((pixel_size, pixel_size))
+
+        # Creating tile_size, which can be used to segment the display and detect which tiles to update
+        self.tile_size = pixel_size/tile_side_count
+        self.tile_manager = TileManager(tile_side_count)
+        self.tile_side_count = tile_side_count
+
+        # Adding a title to the window
+        pygame.display.set_caption("Game of the Amazons")
+
 # START OF GAME CODE
 
 # Initializes pygame
