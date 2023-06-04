@@ -170,7 +170,7 @@ class TileManager:
                     # Team ID is set just in case one wants to look at who burned what
                     selected_tile.set_info(-1, team)
 
-class DisplayManager:
+class GameManager:
     # Displays the state of the game
     # Sends requested inputs to TileManager, then displays the result
     def __init__(self, pixel_size=500, tile_side_count=10):
@@ -230,10 +230,11 @@ class DisplayManager:
 # Initializes pygame
 pygame.init()
 
-display = DisplayManager()
+game_manager = GameManager()
 
 # Main game loop
 run = True
+game_manager.update_display()
 while run:
     # Divide 1000 by the number below to get FPS estimate
     pygame.time.delay(100)
