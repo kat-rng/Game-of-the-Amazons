@@ -249,7 +249,7 @@ class GameManager:
         if output == 1:
             self.action_finished()
         if output >= 0:
-            self.display_all()
+            self.update_display()
 
     def action_finished(self):
         # Describes what to do once an action has been completed
@@ -330,7 +330,6 @@ while run:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
             game_manager.click(mouse_x, mouse_y)
-            game_manager.tile_manager.print_state()
 
 
 
