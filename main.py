@@ -211,6 +211,12 @@ class GameManager:
         # Setting up the TileManager
         self.tile_manager = TileManager(tile_side_count)
 
+    def update_display(self):
+        # Recalculate color for all rectangles
+        # and update the window
+        self.display_all()
+        pygame.display.update()
+
     def display_tile(self, x, y):
         # Getting the pixel location to draw the tile at
         x_location = x * self.tile_size
@@ -272,11 +278,6 @@ while run:
             run = False
 
 
-    # Display all tile locations
-    display.display_all()
-
-    # Updating the display
-    pygame.display.update()
 
 # Closes the window
 pygame.quit()
