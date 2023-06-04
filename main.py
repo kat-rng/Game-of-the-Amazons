@@ -100,6 +100,13 @@ class TileManager:
         # Setting the locations of the Amazons
         self.default_locations()
 
+        # Setting up a default tile array considering node
+        self.considering_id = -1
+
+        # Creating a default Tile to the tile object, and creating an indicator to show that it shouldn't be used
+        self.considering_tile = Tile
+        self.valid_tile_considered = False
+
     def default_locations(self):
         # Setting the locations to the standard amazons board layout
         self.tile_array[3, 0].set_info(-2, 0)
