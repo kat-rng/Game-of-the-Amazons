@@ -301,9 +301,9 @@ class GameManager:
                 # Amazon
                 team = tile.get_team_id()
                 if team == 0:
-                    return pygame.Color(0, 255, 0)
+                    return pygame.Color(255, 255, 255)
                 elif team == 1:
-                    return pygame.Color(0, 0, 255)
+                    return pygame.Color(0, 0, 0)
                 else:
                     print("Invalid team ID 135")
         print("Invalid tile state")
